@@ -1,2 +1,2 @@
 # envfile
-A liitle helper written in go to create a config file from environment variables
+A little helper written in go to create a config file from environment variables
