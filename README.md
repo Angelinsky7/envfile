@@ -3,7 +3,7 @@ A little helper written in go to create a config file from environment variables
 
  ## Usage
 
-You can copy the envfile binary located at https://github.com/Angelinsky7/envfile/releases/download/0.0.1/envfile or build it from the source into your container/machine/project.
+You can copy the envfile binary located at https://github.com/Angelinsky7/envfile/releases/download/v0.0.1/envfile or build it from the source into your container/machine/project.
 The current binary has been built with `CGO_ENABLED=0 GOOS=linux $(GO) build -a -installsuffix cgo -o $(OUT)/envfile` like the Makefile.
 
 if you put the binary here : `/usr/bin/envfile` you can use like that :
