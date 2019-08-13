@@ -12,10 +12,10 @@
             "program": "${fileDirname}",
             "env": {},
             "args": [
-                "--prefix",
+                "-prefix",
                 "NG_",
-                "--r",
-                "--formatter",
+                "-r",
+                "-formatter",
                 "json"
             ]
         }

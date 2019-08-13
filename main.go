@@ -81,6 +81,13 @@ func printChildYAML(base *treeItem, level int) {
 	}
 }
 
+func customUsage() {
+	flag.CommandLine.SetOutput(os.Stdout)
+	fmt.Println("envfile 0.0.1.")
+	fmt.Println("Usage: envfile [OPTION]")
+	flag.PrintDefaults()
+}
+
 func main() {
 
 	prefix := flag.String("prefix", "", "The prefix of the environment variables.")
@@ -88,7 +95,21 @@ func main() {
 	keySeparator := flag.String("separator", "__", "The key separator.")
 	formatter := flag.String("formatter", "json", "The output formatter")
 	verbose := flag.Bool("v", false, "Verbose.")
+	version := flag.Bool("version", false, "Print the version.")
+	help := flag.Bool("help", false, "Print the help.")
+
+	flag.Usage = customUsage
 	flag.Parse()
+
+	if *help {
+		flag.Usage()
+		os.Exit(0)
+	}
+
+	if *version {
+		fmt.Println("envfile 0.0.1")
+		os.Exit(0)
+	}
 
 	if *verbose {
 		fmt.Println("prefix is '", *prefix, "'")
@@ -97,13 +118,6 @@ func main() {
 	}
 
 	root := treeItem{}
-
-	// os.Setenv("NG_TEST1__VAR1", "VALUE1")
-	// os.Setenv("NG_TEST1__VAR2", "VALUEA")
-	// os.Setenv("NG_TEST2__VAR2__SUB1", "VALUE2")
-	// os.Setenv("NG_TEST2__VAR2__SUB2", "VALUE3")
-	// os.Setenv("NG_TEST3__VAR4", "VALUE4")
-	// os.Setenv("NG_ConnectionString__Default", "sqlServer:(//sdfjslkdj3k=jfsld8923h4jklsdf)")
 
 	for _, element := range os.Environ() {
 		canAdd := true
